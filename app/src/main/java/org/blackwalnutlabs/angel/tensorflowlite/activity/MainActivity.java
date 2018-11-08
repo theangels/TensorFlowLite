@@ -178,7 +178,7 @@ public class MainActivity extends Activity implements CameraBridgeViewBase.CvCam
         Mat targetMat = new Mat(rgbMat, new Rect(new Point(MAXWIDTH / 2 - MAXHEIGHT / 2, 0), new Size(MAXWIDTH / 2 + MAXHEIGHT / 2, MAXHEIGHT)));
         Imgproc.resize(targetMat, targetMat, new Size(128, 128));
 
-        List<TensorFlowLiteDetector.Recognition> results = detector.detecteImage(targetMat);
+        List<TensorFlowLiteDetector.Recognition> results = detector.detectImage(targetMat);
 
         rgbaMat.copyTo(rgbMat, mask);
 

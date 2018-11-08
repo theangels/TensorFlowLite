@@ -16,9 +16,7 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
-import java.util.AbstractMap;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -118,7 +116,7 @@ public class TensorFlowLiteDetector {
     }
 
     // 执行预测
-    public List<Recognition> detecteImage(Mat src) {
+    public List<Recognition> detectImage(Mat src) {
         if (tfLite != null) {
             Bitmap bmp = Bitmap.createBitmap(src.width(), src.height(),
                     Bitmap.Config.ARGB_8888);

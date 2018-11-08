@@ -91,13 +91,10 @@ public class PermissionUtils {
 
         } else if (shouldRationalePermissionsList.size() > 0) {
             showMessageOKCancel(activity, "should open those permission",
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            ActivityCompat.requestPermissions(activity, shouldRationalePermissionsList.toArray(new String[shouldRationalePermissionsList.size()]),
-                                    CODE_MULTI_PERMISSION);
-                            Log.d(TAG, "showMessageOKCancel requestPermissions");
-                        }
+                    (dialog, which) -> {
+                        ActivityCompat.requestPermissions(activity, shouldRationalePermissionsList.toArray(new String[shouldRationalePermissionsList.size()]),
+                                CODE_MULTI_PERMISSION);
+                        Log.d(TAG, "showMessageOKCancel requestPermissions");
                     });
         } else {
             grant.onPermissionGranted(CODE_MULTI_PERMISSION);
@@ -154,16 +151,13 @@ public class PermissionUtils {
 
     private static void openSettingActivity(final Activity activity, String message) {
 
-        showMessageOKCancel(activity, message, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent();
-                intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                Log.d(TAG, "getPackageName(): " + activity.getPackageName());
-                Uri uri = Uri.fromParts("package", activity.getPackageName(), null);
-                intent.setData(uri);
-                activity.startActivity(intent);
-            }
+        showMessageOKCancel(activity, message, (dialog, which) -> {
+            Intent intent = new Intent();
+            intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+            Log.d(TAG, "getPackageName(): " + activity.getPackageName());
+            Uri uri = Uri.fromParts("package", activity.getPackageName(), null);
+            intent.setData(uri);
+            activity.startActivity(intent);
         });
     }
 
