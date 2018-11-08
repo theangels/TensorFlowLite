@@ -1,1 +1,1 @@
-# TensorFlow Lite Template Project
+# Android TensorFlow Lite Template Project
